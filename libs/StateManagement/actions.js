@@ -10,5 +10,11 @@ export default {
     },
     setLoading(context, payload) {
         context.commit('setLoading')
+    },
+    setSearchTerm(context, payload) {
+        context.commit('setSearch', payload)
+    },
+    clearSearch(context, payload) {
+        context.commit('clearSongSearch')
     }
 }

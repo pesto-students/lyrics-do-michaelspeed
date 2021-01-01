@@ -10,7 +10,7 @@ export default async function Fetcher(url, options = {}) {
 
     const data = await response.json();
     return {
-        data: data.data,
+        data: data,
         status: response.status,
         response: response
     }

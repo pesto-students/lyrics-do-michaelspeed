@@ -1,5 +1,6 @@
 export default {
     allSongs: [],
     viewLyrics: null,
-    fetching: false
+    fetching: false,
+    searchTerm: ''
 }

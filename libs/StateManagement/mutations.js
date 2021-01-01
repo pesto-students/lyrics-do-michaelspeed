@@ -16,9 +16,15 @@ export default {
     },
     clearSongSearch(state, payload) {
         state.allSongs = [];
+        state.searchTerm = '';
         return state;
     },
     setLoading(state) {
         state.fetching = true;
+        return state;
+    },
+    setSearch(state, payload) {
+        state.searchTerm = payload;
+        return state;
     }
 }

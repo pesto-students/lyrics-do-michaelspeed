@@ -12,22 +12,24 @@ export default class Search extends Components {
 
     render() {
         const self = this;
-        self.element.innerHTML = `<div class="app-input-holder">
+        self.element.innerHTML = `<div>
+<div class="app-input-holder">
                 <div class="form-group">
-                    <input type="text" class="form-control search-input" placeholder="Search Song / Artist Name">
+                    <input type="text" class="form-control search-input" placeholder="Search Song / Artist Name" value="${store.state.searchTerm}">
                 </div>
                 <button class="btn search-button">Search</button>
-            </div>`
+            </div>
+</div>`
 
-        document.querySelector('.search-button').addEventListener('click', () => {
+        document.querySelector('.search-button').addEventListener('click', async () => {
             const inputValue = document.querySelector('.search-input').value;
-            store.dispatch('setLoading')
+            await store.dispatch('setLoading')
+            await store.dispatch('setSearchTerm', inputValue)
+            // Make sure the loading is implied
             setTimeout(() => {
                 Fetcher(`https://api.lyrics.ovh/suggest/${inputValue}`)
                     .then(response => {
-                        store.dispatch('setSongSearch', response.data)
-                        console.log(store)
-                        console.log(response)
+                        store.dispatch('setSongSearch', response.data.data)
                     })
             }, 3000)
         })
