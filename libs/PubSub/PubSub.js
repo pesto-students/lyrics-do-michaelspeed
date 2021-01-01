@@ -1,6 +1,6 @@
 export default class PubSub {
     constructor() {
-        console.log('Start')
+        console.log('Stating event Pub/Sub')
         this.events = {};
     }
 

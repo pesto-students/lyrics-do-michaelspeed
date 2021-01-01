@@ -7,8 +7,18 @@ export default {
         state.viewLyrics = null;
         return state;
     },
-    setSongSearch(state, payload) {
-        state.allSongs = payload;
+    async setSongSearch(state, payload) {
+        for (const item of payload) {
+            state.allSongs.push(item);
+        }
+        state.fetching = false;
         return state;
+    },
+    clearSongSearch(state, payload) {
+        state.allSongs = [];
+        return state;
+    },
+    setLoading(state) {
+        state.fetching = true;
     }
 }
