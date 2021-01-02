@@ -21,7 +21,7 @@ export default class Lyrics extends Components {
                 <h1>${store.state.viewLyrics.title}</h1>
             </div>
             <div class="modal-body">
-                <span style="display: block">${store.state.viewLyrics.lyrics === '' ? 'No Lyrics Found' : store.state.viewLyrics.lyrics}</span>
+                <div style="white-space: pre-wrap">${store.state.viewLyrics.lyrics === '' ? 'No Lyrics Found' : store.state.viewLyrics.lyrics.replace(/(?:\\r\\n|\\r|\\n)/g, '<br>')}</div>
             </div>
         </div>
     </div>`
