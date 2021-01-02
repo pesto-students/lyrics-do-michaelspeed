@@ -216,7 +216,7 @@ body {
 /* Progress Bar */
 .progressbar {
     display: block;
-    position: absolute;
+    position: relative;
     z-index: 9;
     top: 0;
     right: 0;

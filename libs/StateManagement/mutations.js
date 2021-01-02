@@ -32,5 +32,9 @@ export default {
         state.next = payload.next ? payload.next : '';
         state.total = payload.total;
         return state;
+    },
+    clearInitial(state, payload) {
+        state.allSongs = []
+        return state;
     }
 }

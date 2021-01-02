@@ -19,5 +19,8 @@ export default {
     },
     setPaginationItems(context, payload) {
         context.commit('setPagination', payload)
+    },
+    clearInitialArray(context, payload) {
+        context.commit('clearInitial')
     }
 }

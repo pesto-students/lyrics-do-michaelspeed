@@ -13,22 +13,27 @@ export default class Pagination extends Components {
     render() {
         const self = this;
 
-        if (store.state.searchTerm !== '') {
+        if (store.state.searchTerm !== '' && store.state.allSongs.length > 0) {
             self.element.innerHTML = `<div style="display: flex; flex-direction: row; justify-content: space-between; align-items: center;">
-            <button class="btn btn-prev">Prev</button>
-            <button class="btn btn-next">Next</button>
+            <!--<button class="btn btn-prev">Prev</button>-->
+            <button class="btn btn-next">Load More</button>
         </div>`
         } else {
             self.element.innerHTML = `<div/>`
         }
 
-        if (store.state.searchTerm !== ''){
+        if (store.state.searchTerm !== '' && store.state.allSongs.length > 0){
             document.querySelector('.btn-next').addEventListener('click', () => {
-                Fetcher(store.state.next, {
-                    mode: 'no-cors'
-                })
+                store.dispatch('setLoading')
+                Fetcher(store.state.next)
                     .then((response) => {
                         console.log(response)
+                        store.dispatch('setSongSearch', response.data.data)
+                        store.dispatch('setPaginationItems', {
+                            next: response.data.next,
+                            prev: response.data.prev,
+                            total: response.data.total
+                        })
                     })
             })
         }

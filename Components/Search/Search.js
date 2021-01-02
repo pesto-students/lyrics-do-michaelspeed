@@ -29,13 +29,15 @@ export default class Search extends Components {
             setTimeout(() => {
                 Fetcher(`https://api.lyrics.ovh/suggest/${inputValue}`)
                     .then(response => {
-                        console.log(response);
-                        store.dispatch('setSongSearch', response.data.data)
-                        store.dispatch('setPaginationItems', {
-                            next: response.data.next,
-                            // prev: response.data.prev,
-                            total: response.data.total
-                        })
+                        const allSongs = response.data.data;
+                        store.dispatch('clearInitialArray')
+                        setTimeout(() => {
+                            store.dispatch('setSongSearch', allSongs)
+                            store.dispatch('setPaginationItems', {
+                                next: response.data.next,
+                                total: response.data.total
+                            })
+                        }, 300)
                     })
             }, 3000)
         })
