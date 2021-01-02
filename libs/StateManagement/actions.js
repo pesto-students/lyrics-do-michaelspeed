@@ -16,5 +16,8 @@ export default {
     },
     clearSearch(context, payload) {
         context.commit('clearSongSearch')
+    },
+    setPaginationItems(context, payload) {
+        context.commit('setPagination', payload)
     }
 }

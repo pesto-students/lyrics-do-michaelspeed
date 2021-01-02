@@ -29,7 +29,13 @@ export default class Search extends Components {
             setTimeout(() => {
                 Fetcher(`https://api.lyrics.ovh/suggest/${inputValue}`)
                     .then(response => {
+                        console.log(response);
                         store.dispatch('setSongSearch', response.data.data)
+                        store.dispatch('setPaginationItems', {
+                            next: response.data.next,
+                            // prev: response.data.prev,
+                            total: response.data.total
+                        })
                     })
             }, 3000)
         })

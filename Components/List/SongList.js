@@ -15,6 +15,10 @@ export default class SongList extends Components {
         const self = this;
 
         self.element.innerHTML = `<div class="list-container-items">
+            <div style="display: flex; justify-content: space-between; align-items: center; align-content: center;">
+                <h2>${store.state.searchTerm !== '' ? `Searching for ${store.state.searchTerm}` : ''}</h2>
+                <div class="clear-search" style="cursor: pointer">${store.state.searchTerm !== '' ? `&#10006;` :''}</div>
+            </div>
             ${store.state.allSongs.map(song => {
             return `
                 <div class="item-container">
@@ -25,13 +29,18 @@ export default class SongList extends Components {
                     <div class="item-info">
                         <h2>${song.title}</h2>
                         <h4>${song.artist ? song.artist.name : 'Unknown'}</h4>
-                        <button class="btn">Show Lyrics</button>
+                        <button class="btn btn-rounded">Show Lyrics</button>
                     </div>
                 </div>
             </div>
                 `
         })}
         </div>`
+
+        document.querySelector('.clear-search').addEventListener('click', () => {
+            store.dispatch('removeView')
+            store.dispatch('clearSearch')
+        })
 
         self.element.querySelectorAll('button').forEach((button, index) => {
             button.addEventListener('click', () => {

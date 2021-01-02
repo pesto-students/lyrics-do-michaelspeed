@@ -190,6 +190,10 @@ body {
     letter-spacing: 1px;
 }
 
+.btn-rounded {
+    border-radius: 25px;
+}
+
 .floating-text {
     background-color: #001F61;
     border-radius: 10px 10px 0 0;
@@ -220,7 +224,7 @@ body {
     left: 0;
     margin: auto;
     width: 400px;
-    height: 10px;
+    height: 5px;
 }
 .progressbar::before,
 .progressbar::after {

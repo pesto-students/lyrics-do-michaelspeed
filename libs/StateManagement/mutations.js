@@ -26,5 +26,11 @@ export default {
     setSearch(state, payload) {
         state.searchTerm = payload;
         return state;
+    },
+    setPagination(state, payload) {
+        state.prev = payload.prev ? payload.prev : '';
+        state.next = payload.next ? payload.next : '';
+        state.total = payload.total;
+        return state;
     }
 }

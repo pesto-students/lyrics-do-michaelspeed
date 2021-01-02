@@ -2,5 +2,8 @@ export default {
     allSongs: [],
     viewLyrics: null,
     fetching: false,
-    searchTerm: ''
+    searchTerm: '',
+    prev: '',
+    next: '',
+    total: 0
 }
