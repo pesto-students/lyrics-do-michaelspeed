@@ -5,5 +5,6 @@ export default {
     searchTerm: '',
     prev: '',
     next: '',
-    total: 0
+    total: 0,
+    allLyrics: {}
 }

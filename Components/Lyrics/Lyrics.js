@@ -11,7 +11,6 @@ export default class Lyrics extends Components {
 
     render() {
         const self = this;
-        console.log(store.state.viewLyrics)
         if (store.state.viewLyrics !== null) {
             self.element.innerHTML = `<div class="modal" id="modal-name">
         <div class="modal-sandbox"></div>

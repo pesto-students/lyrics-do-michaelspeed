@@ -36,5 +36,9 @@ export default {
     clearInitial(state, payload) {
         state.allSongs = []
         return state;
+    },
+    addLyrics(state, payload) {
+        state.allLyrics[payload.id] = payload;
+        return state;
     }
 }

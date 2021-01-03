@@ -22,5 +22,8 @@ export default {
     },
     clearInitialArray(context, payload) {
         context.commit('clearInitial')
+    },
+    addLyricsActions(context, payload) {
+        context.commit('addLyrics', payload)
     }
 }

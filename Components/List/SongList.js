@@ -45,16 +45,27 @@ export default class SongList extends Components {
         self.element.querySelectorAll('button').forEach((button, index) => {
             button.addEventListener('click', () => {
                 const item = store.state.allSongs[index]
-                Fetcher(`${LyricURL}/${item.artist.name}/${item.title}`)
-                    .then(response => {
-                        if (response.status === 200) {
-                            const newItem = {
-                                lyrics: response.data.lyrics,
-                                ...item
+                if (store.state.allLyrics[item.id] ) {
+                    store.dispatch('setView', store.state.allLyrics[item.id].newItem)
+                } else {
+                    Fetcher(`${LyricURL}/${item.artist.name}/${item.title}`)
+                        .then(response => {
+                            if (response.status === 200) {
+                                const newItem = {
+                                    lyrics: response.data.lyrics,
+                                    ...item
+                                }
+                                if (response.data.lyrics !== '') {
+                                    store.dispatch('addLyricsActions', {
+                                        id: item.id,
+                                        lyrics: response.data.lyrics,
+                                        newItem
+                                    })
+                                }
+                                store.dispatch('setView', newItem)
                             }
-                            store.dispatch('setView', newItem)
-                        }
-                    })
+                        })
+                }
             })
         })
     }
