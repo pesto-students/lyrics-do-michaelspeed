@@ -35,3 +35,7 @@ https://api.lyrics.ovh/suggest/inputQuery
 # Commands
 
 - Run `npm run develop` to run app locally
+
+# hosted link - 
+
+https://michaelspeed.github.io/lyrics-michaelspeed.github.io/
